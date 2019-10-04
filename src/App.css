@@ -1,0 +1,11 @@
+.app {
+    display: flex;
+    height: 100%;
+}
+
+.filters {
+    width: 300px;
+    background: #333;
+    color: #eee;
+    padding: 20px;
+}

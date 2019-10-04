@@ -1,0 +1,14 @@
+.flags-list {
+    flex-grow: 1;
+    padding: 20px;
+    background: #ccc;
+}
+
+.flag-item {
+    display: inline-block;
+    text-align: center;
+    width: 150px;
+    padding: 10px;
+    border: 2px solid #aaa;
+    margin: 10px;
+}
