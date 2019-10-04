@@ -2,13 +2,27 @@ import React from 'react';
 
 import './FlagList.css';
 
-export interface FlagListProps {
-    flags: string[]
+interface Flag {
+    name: string,
+    description: string, // todo: temporal
+    picture: string,
+}
+
+interface FlagListProps {
+    flags: Flag[]
 }
 
 const FlagsList: React.FC<FlagListProps> = ({flags}: FlagListProps) => {
-    const renderFlags = (flags: string[]) => flags.map(item => (
-        <div className="flag-item">{item}</div>
+    const renderFlags = (flags: Flag[]) => flags.map(item => (
+        <div className="flag-item">
+            <div className="flag-item__name">
+                {item.name}
+            </div>
+            <div className="flag-item__description">
+                {item.description}
+            </div>
+
+        </div>
     ));
 
     return (
