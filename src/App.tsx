@@ -1,14 +1,15 @@
 import React from 'react';
 
 import FlagsList from "./flagsList/FlagsList";
-import {FLAGS} from './flags-defenitions';
+import Filter from "./filters/Filter";
+import { FLAGS } from './flags-defenitions';
 import './App.css';
 
 const App = () => {
     return (
         <div className="app">
             <div className="filters">
-                Filters go here
+                <Filter/>
             </div>
             <FlagsList
                 flags={FLAGS}

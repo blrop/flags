@@ -16,9 +16,3 @@
 .flag-item__name {
     font-weight: bold;
 }
-
-.flag-item__description {
-    font-size: 12px;
-    margin-top: 10px;
-    color: #666;
-}
