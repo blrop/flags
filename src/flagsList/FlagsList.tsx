@@ -1,6 +1,7 @@
 import React from 'react';
 
-import './FlagList.css';
+import { FLAGS_DIR } from "../constants";
+import './FlagList.scss';
 
 interface Flag {
     name: string,
@@ -17,6 +18,11 @@ const FlagsList: React.FC<FlagListProps> = ({ flags }: FlagListProps) => {
             <div className="flag-item__name">
                 {item.name}
             </div>
+            <img
+                className="flag-item__image"
+                src={`/${FLAGS_DIR}/${item.picture}`}
+                alt={`${item.name} flag`}
+            />
         </div>
     ));
 
@@ -28,4 +34,3 @@ const FlagsList: React.FC<FlagListProps> = ({ flags }: FlagListProps) => {
 };
 
 export default FlagsList;
-

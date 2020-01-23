@@ -7,12 +7,17 @@
 .flag-item {
     display: inline-block;
     text-align: center;
-    width: 150px;
+    width: 300px;
     padding: 10px;
     border: 2px solid #aaa;
     margin: 10px;
-}
 
-.flag-item__name {
-    font-weight: bold;
+    &__name {
+
+    }
+
+    &__image {
+        margin-top: 20px;
+        width: 150px;
+    }
 }

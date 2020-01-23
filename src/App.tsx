@@ -3,7 +3,7 @@ import React from 'react';
 import FlagsList from "./flagsList/FlagsList";
 import Filter from "./filters/Filter";
 import { FLAGS } from './flags-defenitions';
-import './App.css';
+import './App.scss';
 
 const App = () => {
     return (

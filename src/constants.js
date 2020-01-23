@@ -1,0 +1,1 @@
+export const FLAGS_DIR = 'flags';
