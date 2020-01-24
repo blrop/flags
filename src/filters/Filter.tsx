@@ -6,12 +6,6 @@ const Filter = () => {
     return (
         <div className="filter">
             <div className="filter__group">
-                <div className="filter-item">
-                    <label><input type="checkbox"/> The flag is a tricolor</label>
-                </div>
-            </div>
-
-            <div className="filter__group">
                 <h3>The flag consists of:</h3>
                 <div className="filter-item">
                     <label><input type="checkbox"/> Horizontal lines</label>
