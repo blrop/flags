@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './Filter.scss';
 
 const Filter = () => {
+    const horizontalLines = useCheckboxInput(false);
+    const verticalLines = useCheckboxInput(false);
+
     return (
         <div className="filter">
             <div className="filter__group">
                 <h3>The flag consists of:</h3>
                 <div className="filter-item">
-                    <label><input type="checkbox"/> Horizontal lines</label>
+                    <label>
+                        <input type="checkbox" {...horizontalLines} /> Horizontal lines</label>
                 </div>
                 <div className="filter-item">
-                    <label><input type="checkbox"/> Vertical lines</label>
+                    <label><input type="checkbox" {...verticalLines}/> Vertical lines</label>
                 </div>
             </div>
 
@@ -65,3 +69,16 @@ const Filter = () => {
 };
 
 export default Filter;
+
+function useCheckboxInput(initialValue: any) {
+    const [value, setValue] = useState(initialValue);
+
+    function handleChange(e: any) {
+        setValue(e.target.checked);
+    }
+
+    return {
+        checked: value,
+        onChange: handleChange,
+    };
+}
