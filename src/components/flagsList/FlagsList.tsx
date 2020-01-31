@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { FLAGS_DIR } from "../constants";
+import { FLAGS_DIR } from "../../common/constants";
 import './FlagList.scss';
 
 interface Flag {

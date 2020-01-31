@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import FlagsList from "./flagsList/FlagsList";
 import Filter from "./filters/Filter";
-import { FLAGS } from './flags-defenitions';
+import { FLAGS } from '../common/flags-defenitions';
 import './App.scss';
 
 const App = () => {
