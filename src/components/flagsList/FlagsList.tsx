@@ -1,6 +1,8 @@
 import React from 'react';
 
 import { FLAGS_DIR } from "../../common/constants";
+import FlagProps from "../../common/FlagProps";
+
 import './FlagList.scss';
 
 interface Flag {
@@ -10,7 +12,7 @@ interface Flag {
 
 interface FlagListProps {
     flags: Flag[],
-    filtersState: {},
+    filtersState: FlagProps,
 }
 
 const FlagsList: React.FC<FlagListProps> = ({ flags, filtersState }: FlagListProps) => {
