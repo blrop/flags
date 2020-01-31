@@ -9,10 +9,13 @@ interface Flag {
 }
 
 interface FlagListProps {
-    flags: Flag[]
+    flags: Flag[],
+    filtersState: {},
 }
 
-const FlagsList: React.FC<FlagListProps> = ({ flags }: FlagListProps) => {
+const FlagsList: React.FC<FlagListProps> = ({ flags, filtersState }: FlagListProps) => {
+    console.log(filtersState);
+
     const renderFlags = (flags: Flag[]) => flags.map(item => (
         <div className="flag-item" key={item.name}>
             <div className="flag-item__name">

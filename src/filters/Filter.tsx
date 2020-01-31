@@ -1,73 +1,29 @@
-import React, { useReducer } from 'react';
+import React, { useState } from 'react';
 
 import './Filter.scss';
 
-type Actions =
-    | { type: 'setHorizontalLines', payload: boolean }
-    | { type: 'setVerticalLines', payload: boolean };
-
-interface State {
-    horizontalLines: boolean,
-    verticalLines: boolean,
+interface FilterProps {
+    onChange: (name: string, checked: boolean) => void,
 }
 
-const initialState: State = {
-    horizontalLines: false,
-    verticalLines: false,
-};
+const Filter: React.FC<FilterProps> = (props: FilterProps) => {
+    const useCheckboxInput = (name: string, initialValue: boolean) => {
+        const [value, setValue] = useState(initialValue);
 
-const FlagsFiltersReducer = (state: State, action: Actions) => {
-    switch (action.type) {
-        case 'setHorizontalLines':
-            return {
-                ...state,
-                horizontalLines: action.payload,
-            };
+        function handleChange(e: any) {
+            setValue(e.target.checked);
 
-        case 'setVerticalLines':
-            return {
-                ...state,
-                verticalLines: action.payload,
-            };
+            props.onChange(name, e.target.checked);
+        }
 
-        default:
-            return state;
-    }
-};
-
-const setHorizontalLines = (checked: boolean): Actions => ({
-    type: 'setHorizontalLines',
-    payload: checked,
-});
-
-const setVerticalLines = (checked: boolean): Actions => ({
-    type: 'setVerticalLines',
-    payload: checked,
-});
-
-function useCheckboxInputReducer(initialValue: State, action: (checked: boolean) => Actions, stateField: keyof State) {
-    const [state, dispatch] = useReducer(FlagsFiltersReducer, initialValue);
-
-    function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-        dispatch(action(e.target.checked));
-    }
-
-    function prop<T, K extends keyof T>(obj: T, key: K) {
-        return obj[key];
-    }
-
-    return {
-        checked: prop(state, stateField),
-        onChange: handleChange,
+        return {
+            checked: value,
+            onChange: handleChange,
+        };
     };
-}
 
-const Filter = () => {
-    const horizontalLines = useCheckboxInputReducer(initialState, setHorizontalLines, 'horizontalLines');
-    const verticalLines = useCheckboxInputReducer(initialState, setVerticalLines, 'verticalLines');
-
-    console.log(horizontalLines);
-    console.log(verticalLines);
+    const horizontalLines = useCheckboxInput('horizontalLines', false);
+    const verticalLines = useCheckboxInput('verticalLines', false);
 
     return (
         <div className="filter">
