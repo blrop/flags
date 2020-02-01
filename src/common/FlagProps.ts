@@ -16,3 +16,23 @@ export default interface FlagProps {
     pictureCrescent?: boolean,
     pictureOther?: boolean,
 }
+
+// we need this because Object.keys returns string[] instead of "keyof"
+export const FLAG_PROPS_KEYS: (keyof FlagProps)[] = [
+    'linesHorizontal',
+    'linesVertical',
+
+    'colorWhite',
+    'colorBlack',
+    'colorRed',
+    'colorGreen',
+    'colorBlue',
+    'colorYellow',
+
+    'pictureCross',
+    'pictureStar',
+    'pictureCircle',
+    'pictureTriangle',
+    'pictureCrescent',
+    'pictureOther'
+];

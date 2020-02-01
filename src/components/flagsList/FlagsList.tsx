@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { FLAGS_DIR } from "../../common/constants";
-import FlagProps from "../../common/FlagProps";
+import FlagProps, { FLAG_PROPS_KEYS } from "../../common/FlagProps";
 import { getProp } from "../../common/functions";
 
 import './FlagList.scss';
@@ -24,14 +24,9 @@ const FlagsList: React.FC<FlagListProps> = ({ flags, filtersState }: FlagListPro
 
     const renderFlags = (flags: Flag[]) => flags
         .filter((flag: Flag) => {
-            const flagPropsKeys: (keyof FlagProps)[] = ['linesHorizontal', 'linesVertical', 'colorWhite', 'colorBlack', 'colorRed', 'colorGreen', 'colorBlue', 'colorYellow', 'pictureCross', 'pictureStar', 'pictureCircle', 'pictureTriangle', 'pictureCrescent', 'pictureOther'];
-
-            let result: boolean = true;
-            flagPropsKeys.forEach(filterFieldName => {
-                result = result && isFilterFieldOk(filterFieldName, filtersState, flag.props);
-            });
-            
-            return result;
+            return FLAG_PROPS_KEYS.reduce((accumulator: boolean, currentValue) => {
+                return accumulator && isFilterFieldOk(currentValue, filtersState, flag.props);
+            }, true);
         })
         .map((item: Flag) => (
         <div className="flag-item" key={item.name}>
