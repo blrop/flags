@@ -18,30 +18,20 @@ interface FlagListProps {
 }
 
 const FlagsList: React.FC<FlagListProps> = ({ flags, filtersState }: FlagListProps) => {
-    const isFilterFieldOk = (name: keyof FlagProps, filterState: FlagProps, flagProps: FlagProps) => {
-        return !getProp(filtersState, name) || (getProp(filtersState, name) && getProp(flagProps, name));
+    const isFilterFieldOk = (name: keyof FlagProps, filterState: FlagProps, flagProps: FlagProps): boolean => {
+        return !getProp(filtersState, name) || (getProp(filtersState, name) && getProp(flagProps, name)) || false;
     };
 
     const renderFlags = (flags: Flag[]) => flags
         .filter((flag: Flag) => {
-            return (
-                isFilterFieldOk('linesHorizontal', filtersState, flag.props) &&
-                isFilterFieldOk('linesVertical', filtersState, flag.props) &&
+            const flagPropsKeys: (keyof FlagProps)[] = ['linesHorizontal', 'linesVertical', 'colorWhite', 'colorBlack', 'colorRed', 'colorGreen', 'colorBlue', 'colorYellow', 'pictureCross', 'pictureStar', 'pictureCircle', 'pictureTriangle', 'pictureCrescent', 'pictureOther'];
 
-                isFilterFieldOk('colorWhite', filtersState, flag.props) &&
-                isFilterFieldOk('colorBlack', filtersState, flag.props) &&
-                isFilterFieldOk('colorRed', filtersState, flag.props) &&
-                isFilterFieldOk('colorGreen', filtersState, flag.props) &&
-                isFilterFieldOk('colorBlue', filtersState, flag.props) &&
-                isFilterFieldOk('colorYellow', filtersState, flag.props) &&
-
-                isFilterFieldOk('pictureCross', filtersState, flag.props) &&
-                isFilterFieldOk('pictureStar', filtersState, flag.props) &&
-                isFilterFieldOk('pictureCircle', filtersState, flag.props) &&
-                isFilterFieldOk('pictureTriangle', filtersState, flag.props) &&
-                isFilterFieldOk('pictureCrescent', filtersState, flag.props) &&
-                isFilterFieldOk('pictureOther', filtersState, flag.props)
-            );
+            let result: boolean = true;
+            flagPropsKeys.forEach(filterFieldName => {
+                result = result && isFilterFieldOk(filterFieldName, filtersState, flag.props);
+            });
+            
+            return result;
         })
         .map((item: Flag) => (
         <div className="flag-item" key={item.name}>
