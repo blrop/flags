@@ -42,64 +42,34 @@ const Filter: React.FC<FilterProps> = (props: FilterProps) => {
     const pictureOther = useCheckboxInput('pictureOther', false);
 
     return (
-        <div className="filter">
+        <>
+            <h2>Filters</h2>
             <div className="filter__group">
                 <h3>The flag consists of:</h3>
-                <div className="filter-item">
-                    <label>
-                        <input type="checkbox" {...linesHorizontal} /> Horizontal lines</label>
-                </div>
-                <div className="filter-item">
-                    <label><input type="checkbox" {...linesVertical}/> Vertical lines</label>
-                </div>
+                <label className="filter__item"><input type="checkbox" {...linesHorizontal} /> Horizontal lines</label>
+                <label className="filter__item"><input type="checkbox" {...linesVertical}/> Vertical lines</label>
             </div>
 
             <div className="filter__group">
                 <h3>The flag has colors:</h3>
-                <div className="filter-item">
-                    <label><input type="checkbox" {...colorWhite}/> White</label>
-                </div>
-                <div className="filter-item">
-                    <label><input type="checkbox" {...colorBlack}/> Black</label>
-                </div>
-
-                <div className="filter-item">
-                    <label><input type="checkbox" {...colorRed}/> Red</label>
-                </div>
-                <div>
-                    <label><input type="checkbox" {...colorGreen}/> Green</label>
-                </div>
-                <div className="filter-item">
-                    <label><input type="checkbox" {...colorBlue}/> Blue</label>
-                </div>
-
-                <div className="filter-item">
-                    <label><input type="checkbox" {...colorYellow}/> Yellow / Orange</label>
-                </div>
+                <label className="filter__item"><input type="checkbox" {...colorWhite}/> White</label>
+                <label className="filter__item"><input type="checkbox" {...colorBlack}/> Black</label>
+                <label className="filter__item"><input type="checkbox" {...colorRed}/> Red</label>
+                <label className="filter__item"><input type="checkbox" {...colorGreen}/> Green</label>
+                <label className="filter__item"><input type="checkbox" {...colorBlue}/> Blue</label>
+                <label className="filter__item"><input type="checkbox" {...colorYellow}/> Yellow / Orange</label>
             </div>
 
             <div className="filter__group">
                 <h3>The flag also has:</h3>
-                <div className="filter-item">
-                    <label><input type="checkbox" {...pictureCross}/> Cross</label>
-                </div>
-                <div className="filter-item">
-                    <label><input type="checkbox" {...pictureStar}/> Star(s)</label>
-                </div>
-                <div className="filter-item">
-                    <label><input type="checkbox" {...pictureCircle}/> Circle</label>
-                </div>
-                <div className="filter-item">
-                    <label><input type="checkbox" {...pictureTriangle}/> Triangle</label>
-                </div>
-                <div className="filter-item">
-                    <label><input type="checkbox" {...pictureCrescent}/> Crescent</label>
-                </div>
-                <div className="filter-item">
-                    <label><input type="checkbox" {...pictureOther}/> Other picture</label>
-                </div>
+                <label className="filter__item"><input type="checkbox" {...pictureCross}/> Cross</label>
+                <label className="filter__item"><input type="checkbox" {...pictureStar}/> Star</label>
+                <label className="filter__item"><input type="checkbox" {...pictureCircle}/> Circle</label>
+                <label className="filter__item"><input type="checkbox" {...pictureTriangle}/> Triangle</label>
+                <label className="filter__item"><input type="checkbox" {...pictureCrescent}/> Crescent</label>
+                <label className="filter__item"><input type="checkbox" {...pictureOther}/> Other picture</label>
             </div>
-        </div>
+        </>
     );
 };
 

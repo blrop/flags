@@ -30,19 +30,19 @@ const FlagsList: React.FC<FlagListProps> = ({ flags, filtersState }: FlagListPro
         })
         .map((item: Flag) => (
         <div className="flag-item" key={item.name}>
-            <div className="flag-item__name">
-                {item.name}
-            </div>
             <img
                 className="flag-item__image"
                 src={`/${FLAGS_DIR}/${item.picture}`}
                 alt={`${item.name} flag`}
             />
+            <div className="flag-item__name">
+                {item.name}
+            </div>
         </div>
     ));
 
     return (
-        <div className="flags-list">
+        <div className="flag-list">
             {renderFlags(flags)}
         </div>
     );

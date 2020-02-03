@@ -17,15 +17,18 @@ const App = () => {
 
     return (
         <div className="app">
-            <div className="filters">
+            <div className="filter">
                 <Filter
                     onChange={handleFilterChange}
                 />
             </div>
-            <FlagsList
-                flags={FLAGS}
-                filtersState={filtersState}
-            />
+            <div className="flags-list-wrapper">
+                <h1>Flag list</h1>
+                <FlagsList
+                    flags={FLAGS}
+                    filtersState={filtersState}
+                />
+            </div>
         </div>
     );
 };
