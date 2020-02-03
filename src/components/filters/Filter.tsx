@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 
 import FlagProps from "../../common/FlagProps";
 
-import './Filter.scss';
-
 interface FilterProps {
     onChange: (name: string, checked: boolean) => void,
 }
