@@ -31,6 +31,10 @@
             background: #222;
         }
 
+        input:checked + label {
+            color: #51da49;
+        }
+
         input {
             outline: none;
             margin: 0;
