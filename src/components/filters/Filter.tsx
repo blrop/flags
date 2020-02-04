@@ -1,43 +1,45 @@
 import React, { useState } from 'react';
-
-import FlagProps from "../../common/FlagProps";
+import { FLAG_PROPS_KEYS } from "../../common/FlagProps";
 
 interface FilterProps {
-    onChange: (name: string, checked: boolean) => void,
+    onChange: (state: object) => void,
 }
 
 const Filter: React.FC<FilterProps> = (props: FilterProps) => {
-    const useCheckboxInput = (name: keyof FlagProps, initialValue: boolean) => {
-        const [value, setValue] = useState(initialValue);
+    let initialState: any = {};
+    FLAG_PROPS_KEYS.forEach(item => {
+        initialState[item] = false;
+    });
+    const [filtersState, setFiltersState] = useState(initialState);
 
-        function handleChange(e: any) {
-            setValue(e.target.checked);
+    let inputsProps: any = {};
+    FLAG_PROPS_KEYS.forEach(item => {
+        inputsProps[item] = {
+            checked: filtersState[item],
+            onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+                const newState = {
+                    ...filtersState,
+                    [item]: e.target.checked
+                };
 
-            props.onChange(name, e.target.checked);
-        }
+                setFiltersState(newState);
 
-        return {
-            checked: value,
-            onChange: handleChange,
+                props.onChange(newState);
+            },
         };
+    });
+
+
+    const onFilterResetClick = () => {
+        const newState: any = {};
+        FLAG_PROPS_KEYS.forEach(item => {
+            newState[item] = false;
+        });
+
+        setFiltersState(newState);
+
+        props.onChange(newState);
     };
-
-    const linesHorizontal = useCheckboxInput('linesHorizontal', false);
-    const linesVertical = useCheckboxInput('linesVertical', false);
-
-    const colorWhite = useCheckboxInput('colorWhite', false);
-    const colorBlack = useCheckboxInput('colorBlack', false);
-    const colorRed = useCheckboxInput('colorRed', false);
-    const colorGreen = useCheckboxInput('colorGreen', false);
-    const colorBlue = useCheckboxInput('colorBlue', false);
-    const colorYellow = useCheckboxInput('colorYellow', false);
-
-    const pictureCross = useCheckboxInput('pictureCross', false);
-    const pictureStar = useCheckboxInput('pictureStar', false);
-    const pictureCircle = useCheckboxInput('pictureCircle', false);
-    const pictureTriangle = useCheckboxInput('pictureTriangle', false);
-    const pictureCrescent = useCheckboxInput('pictureCrescent', false);
-    const pictureOther = useCheckboxInput('pictureOther', false);
 
     return (
         <>
@@ -45,11 +47,11 @@ const Filter: React.FC<FilterProps> = (props: FilterProps) => {
             <div className="filter__group">
                 <h3>The flag consists of:</h3>
                 <div className="filter__item">
-                    <input type="checkbox" id="linesHorizontal" {...linesHorizontal} />
+                    <input type="checkbox" id="linesHorizontal" {...inputsProps['linesHorizontal']} />
                     <label htmlFor="linesHorizontal">Horizontal lines</label>
                 </div>
                 <div className="filter__item">
-                    <input type="checkbox" id="linesVertical" {...linesVertical} />
+                    <input type="checkbox" id="linesVertical" {...inputsProps['linesVertical']} />
                     <label htmlFor="linesVertical">Vertical lines</label>
                 </div>
             </div>
@@ -57,27 +59,27 @@ const Filter: React.FC<FilterProps> = (props: FilterProps) => {
             <div className="filter__group">
                 <h3>The flag has colors:</h3>
                 <div className="filter__item">
-                    <input type="checkbox" id="colorWhite" {...colorWhite} />
+                    <input type="checkbox" id="colorWhite" {...inputsProps['colorWhite']} />
                     <label htmlFor="colorWhite">White</label>
                 </div>
                 <div className="filter__item">
-                    <input type="checkbox" id="colorBlack" {...colorBlack} />
+                    <input type="checkbox" id="colorBlack" {...inputsProps['colorBlack']} />
                     <label htmlFor="colorBlack">Black</label>
                 </div>
                 <div className="filter__item">
-                    <input type="checkbox" id="colorRed" {...colorRed} />
+                    <input type="checkbox" id="colorRed" {...inputsProps['colorRed']} />
                     <label htmlFor="colorRed">Red</label>
                 </div>
                 <div className="filter__item">
-                    <input type="checkbox" id="colorGreen" {...colorGreen} />
+                    <input type="checkbox" id="colorGreen" {...inputsProps['colorGreen']} />
                     <label htmlFor="colorGreen">Green</label>
                 </div>
                 <div className="filter__item">
-                    <input type="checkbox" id="colorBlue" {...colorBlue} />
+                    <input type="checkbox" id="colorBlue" {...inputsProps['colorBlue']} />
                     <label htmlFor="colorBlue">Blue</label>
                 </div>
                 <div className="filter__item">
-                    <input type="checkbox" id="colorYellow" {...colorYellow} />
+                    <input type="checkbox" id="colorYellow" {...inputsProps['colorYellow']} />
                     <label htmlFor="colorYellow">Yellow / Orange</label>
                 </div>
             </div>
@@ -85,29 +87,33 @@ const Filter: React.FC<FilterProps> = (props: FilterProps) => {
             <div className="filter__group">
                 <h3>The flag also has:</h3>
                 <div className="filter__item">
-                    <input type="checkbox" id="pictureCross" {...pictureCross} />
+                    <input type="checkbox" id="pictureCross" {...inputsProps['pictureCross']} />
                     <label htmlFor="pictureCross">Cross</label>
                 </div>
                 <div className="filter__item">
-                    <input type="checkbox" id="pictureStar" {...pictureStar} />
+                    <input type="checkbox" id="pictureStar" {...inputsProps['pictureStar']} />
                     <label htmlFor="pictureStar">Star</label>
                 </div>
                 <div className="filter__item">
-                    <input type="checkbox" id="pictureCircle" {...pictureCircle} />
+                    <input type="checkbox" id="pictureCircle" {...inputsProps['pictureCircle']} />
                     <label htmlFor="pictureCircle">Circle</label>
                 </div>
                 <div className="filter__item">
-                    <input type="checkbox" id="pictureTriangle" {...pictureTriangle} />
+                    <input type="checkbox" id="pictureTriangle" {...inputsProps['pictureTriangle']} />
                     <label htmlFor="pictureTriangle">Triangle</label>
                 </div>
                 <div className="filter__item">
-                    <input type="checkbox" id="pictureCrescent" {...pictureCrescent} />
+                    <input type="checkbox" id="pictureCrescent" {...inputsProps['pictureCrescent']} />
                     <label htmlFor="pictureCrescent">Crescent</label>
                 </div>
                 <div className="filter__item">
-                    <input type="checkbox" id="pictureOther" {...pictureOther} />
+                    <input type="checkbox" id="pictureOther" {...inputsProps['pictureOther']} />
                     <label htmlFor="pictureOther">Other picture</label>
                 </div>
+            </div>
+
+            <div className="filter__group filter__group--center">
+                <button onClick={onFilterResetClick}>Reset filter</button>
             </div>
         </>
     );

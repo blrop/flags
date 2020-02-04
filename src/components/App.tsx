@@ -8,11 +8,8 @@ import './App.scss';
 const App = () => {
     const [filtersState, setFiltersState] = useState({});
 
-    const handleFilterChange = (name: string, checked: boolean) => {
-        setFiltersState({
-            ...filtersState,
-            [name]: checked,
-        });
+    const handleFilterChange = (state: object) => {
+        setFiltersState(state);
     };
 
     return (
