@@ -25,6 +25,13 @@ const App = () => {
                     flags={FLAGS}
                     filtersState={filtersState}
                 />
+                <div className="powered-by">
+                    <div className="powered-by__title">Powered by:</div>
+                    <div>
+                        <img src="images/react-logo.svg" alt="React logo"/>
+                        <img src="images/ts-logo.svg" alt="Typescript logo"/>
+                    </div>
+                </div>
             </div>
         </div>
     );

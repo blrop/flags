@@ -86,7 +86,7 @@ $filter-bg: #333;
 
 .flags-list-wrapper {
     flex-grow: 1;
-    padding: 1em 2em;
+    padding-top: 1em;
     background: #ccc;
     overflow-y: auto;
     height: 100vh;
@@ -97,11 +97,36 @@ $filter-bg: #333;
     }
 }
 
+.powered-by {
+    padding: 2em;
+    background: #222;
+    color: $filter-text;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__title {
+        flex-shrink: 0;
+    }
+
+    img {
+        height: 5em;
+        margin: 0 0.5em;
+    }
+}
+
 @media (max-width: 700px) {
     .flag-item__image {
         max-width: 100%;
         width: auto;
         height: auto;
+    }
+
+    .powered-by {
+        padding: 0.5em;
+        img {
+            height: 2em;
+        }
     }
 }
 
