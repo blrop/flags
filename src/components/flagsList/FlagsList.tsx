@@ -32,7 +32,7 @@ const FlagsList: React.FC<FlagListProps> = ({ flags, filtersState }: FlagListPro
         <div className="flag-item" key={item.name}>
             <img
                 className="flag-item__image"
-                src={`/${FLAGS_DIR}/${item.picture}`}
+                src={`${FLAGS_DIR}/${item.picture}`}
                 alt={`${item.name} flag`}
             />
             <div className="flag-item__name">
