@@ -10,7 +10,7 @@ interface FlagListProps {
 const FlagsList: React.FC<FlagListProps> = ({ flags }: FlagListProps) => {
     const renderFlags = (flags: Flag[]) =>
         flags.map((item: Flag) => (
-            <FlagItem flag={item} />
+            <FlagItem flag={item} key={item.name} />
         )
     );
 

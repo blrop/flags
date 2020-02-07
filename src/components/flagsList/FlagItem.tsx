@@ -20,7 +20,6 @@ const FlagItem: React.FC<FlagItemProps> = ({ flag }: FlagItemProps) => {
         <>
             <div
                 className="flag-item"
-                key={flag.name}
                 onClick={handleFlagClick}
             >
                 <img
