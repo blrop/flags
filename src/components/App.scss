@@ -53,7 +53,7 @@ $main-bg: #ccc;
     height: 100vh;
 
     h2 {
-        margin: 0;
+        margin: 0 0 0.5em 0;
         font-size: 30px;
     }
 
@@ -91,7 +91,11 @@ $main-bg: #ccc;
     }
 
     &__group {
-        margin-top: 2em;
+        margin-bottom: 2em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
 
         &--center {
             text-align: center;
@@ -201,11 +205,19 @@ $main-bg: #ccc;
         &.shown {
             display: block;
         }
+
+        h2 {
+            display: none;
+        }
     }
 
     .flags-list-wrapper {
         &.shown {
             display: flex;
+        }
+
+        h1 {
+            display: none;
         }
     }
 
