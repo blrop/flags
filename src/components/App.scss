@@ -137,7 +137,7 @@ $main-bg: #ccc;
     }
 
     .powered-by {
-        padding: 2em;
+        padding: 0.5em;
         background: #222;
         color: $filter-text;
         display: flex;
@@ -149,7 +149,7 @@ $main-bg: #ccc;
         }
 
         img {
-            height: 5em;
+            height: 2em;
             margin: 0 0.5em;
         }
     }
@@ -158,6 +158,7 @@ $main-bg: #ccc;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
+        align-content: flex-start;
         flex-grow: 1;
     }
 
@@ -165,7 +166,6 @@ $main-bg: #ccc;
         margin: 0.5em;
         padding: 0.5em;
         display: flex;
-        justify-content: flex-start;
         align-items: center;
         background: lighten($main-bg, 10%);
 
@@ -185,14 +185,6 @@ $main-bg: #ccc;
         max-width: 100%;
         width: auto;
         height: auto;
-    }
-
-    .powered-by {
-        padding: 0.5em;
-
-        img {
-            height: 2em;
-        }
     }
 }
 
