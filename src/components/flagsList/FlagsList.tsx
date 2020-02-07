@@ -4,8 +4,6 @@ import { FLAGS_DIR } from "../../common/constants";
 import FlagProps, { FLAG_PROPS_KEYS } from "../../common/FlagProps";
 import { getProp } from "../../common/functions";
 
-import './FlagList.scss';
-
 interface Flag {
     name: string,
     picture: string,
