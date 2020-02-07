@@ -4,14 +4,28 @@ import classNames from 'classnames';
 import FlagsList from "./flagsList/FlagsList";
 import Filter from "./filters/Filter";
 import { FLAGS } from '../common/flags-defenitions';
-import './App.scss';
+import FlagProps, { FLAG_PROPS_KEYS } from "../common/FlagProps";
+import Flag from "../common/Flag";
+import { getProp } from "../common/functions";
 
-// todo: do the actual filtering here (instead of the FlagList component) to be able to show flags count on the button
+import './App.scss';
 
 enum Screen {
     Filters,
     Flags,
 }
+
+const getFilteredFlags = (filtersState: FlagProps) => {
+    const isFilterFieldOk = (name: keyof FlagProps, filterState: FlagProps, flagProps: FlagProps): boolean => {
+        return !getProp(filtersState, name) || (getProp(filtersState, name) && getProp(flagProps, name)) || false;
+    };
+
+    return FLAGS.filter((flag: Flag) => {
+        return FLAG_PROPS_KEYS.reduce((accumulator: boolean, currentValue) => {
+            return accumulator && isFilterFieldOk(currentValue, filtersState, flag.props);
+        }, true);
+    });
+};
 
 const App = () => {
     const [filtersState, setFiltersState] = useState({});
@@ -30,6 +44,8 @@ const App = () => {
     const isFiltersScreenSet = (currentScreen === Screen.Filters);
     const isFlagsScreenSet = (currentScreen === Screen.Flags);
 
+    const filteredFlags = getFilteredFlags(filtersState);
+
     return (
         <div className="app">
             <div className="content">
@@ -42,8 +58,7 @@ const App = () => {
                 <div className={classNames("flags-list-wrapper", { shown: isFlagsScreenSet })}>
                     <h1>Flag list</h1>
                     <FlagsList
-                        flags={FLAGS}
-                        filtersState={filtersState}
+                        flags={filteredFlags}
                     />
                     <div className="powered-by">
                         <div className="powered-by__title">Powered by:</div>
@@ -66,7 +81,7 @@ const App = () => {
                     className={classNames({ active: isFlagsScreenSet })}
                     onClick={setFlagsScreen}
                 >
-                    Flags (256)
+                    Flags ({filteredFlags.length})
                 </button>
             </div>
         </div>
