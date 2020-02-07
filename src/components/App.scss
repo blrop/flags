@@ -90,6 +90,8 @@ $filter-bg: #333;
     background: #ccc;
     overflow-y: auto;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
 
     h1 {
         margin: 0 0 0.5em 0;
