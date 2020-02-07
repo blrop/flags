@@ -201,6 +201,7 @@ $main-bg: #ccc;
             max-width: 100%;
             max-height: 100%;
             min-height: 0;
+            object-fit: contain;
         }
 
         &__image-wrapper {
