@@ -5,7 +5,43 @@ $main-bg: #ccc;
 
 .app {
     display: flex;
+    flex-direction: column;
     min-height: 100%;
+
+    .content {
+        flex-grow: 1;
+        display: flex;
+        overflow-y: auto;
+        height: 0;
+    }
+
+    .main-buttons {
+        display: none;
+
+        bottom: 0;
+        width: 100%;
+        align-items: stretch;
+
+        button {
+            flex-grow: 1;
+            background: darken($filter-bg, 10%);
+            color: $filter-text;
+            padding: 0.5em;
+            font-size: 20px;
+            border: none;
+            border-bottom-width: 2px;
+            outline: none;
+
+            &.active,
+            &:hover,
+            &:focus {
+                background: darken($filter-bg, 5%);
+                font-weight: bold;
+                color: $highlight;
+                border-bottom: 2px solid $highlight;
+            }
+        }
+    }
 }
 
 .filter {
@@ -56,6 +92,7 @@ $main-bg: #ccc;
 
     &__group {
         margin-top: 2em;
+
         &--center {
             text-align: center;
         }
@@ -152,6 +189,7 @@ $main-bg: #ccc;
 
     .powered-by {
         padding: 0.5em;
+
         img {
             height: 2em;
         }
@@ -159,16 +197,29 @@ $main-bg: #ccc;
 }
 
 @media (max-width: 500px) {
-    .app {
-        flex-wrap: wrap;
+    .filter,
+    .flags-list-wrapper {
+        height: auto;
+        display: none;
     }
 
     .filter {
         flex-grow: 1;
+
+        &.shown {
+            display: block;
+        }
     }
 
-    .filter,
     .flags-list-wrapper {
-        height: auto;
+        &.shown {
+            display: flex;
+        }
+    }
+
+    .app {
+        .main-buttons {
+            display: flex;
+        }
     }
 }
