@@ -6,14 +6,16 @@ interface FilterProps {
 }
 
 const Filter: React.FC<FilterProps> = (props: FilterProps) => {
+    const filterKeys = [...FLAG_PROPS_KEYS, 'strictMode'];
+
     let initialState: any = {};
-    FLAG_PROPS_KEYS.forEach(item => {
+    filterKeys.forEach(item => {
         initialState[item] = false;
     });
     const [filtersState, setFiltersState] = useState(initialState);
 
     let inputsProps: any = {};
-    FLAG_PROPS_KEYS.forEach(item => {
+    filterKeys.forEach(item => {
         inputsProps[item] = {
             checked: filtersState[item],
             onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,14 +33,9 @@ const Filter: React.FC<FilterProps> = (props: FilterProps) => {
 
 
     const onFilterResetClick = () => {
-        const newState: any = {};
-        FLAG_PROPS_KEYS.forEach(item => {
-            newState[item] = false;
-        });
+        setFiltersState(initialState);
 
-        setFiltersState(newState);
-
-        props.onChange(newState);
+        props.onChange(initialState);
     };
 
     return (
@@ -95,6 +92,10 @@ const Filter: React.FC<FilterProps> = (props: FilterProps) => {
                     <label htmlFor="pictureStar">Star</label>
                 </div>
                 <div className="filter__item">
+                    <input type="checkbox" id="pictureSun" {...inputsProps['pictureSun']} />
+                    <label htmlFor="pictureSun">Sun</label>
+                </div>
+                <div className="filter__item">
                     <input type="checkbox" id="pictureCircle" {...inputsProps['pictureCircle']} />
                     <label htmlFor="pictureCircle">Circle</label>
                 </div>
@@ -109,6 +110,13 @@ const Filter: React.FC<FilterProps> = (props: FilterProps) => {
                 <div className="filter__item">
                     <input type="checkbox" id="pictureOther" {...inputsProps['pictureOther']} />
                     <label htmlFor="pictureOther">Other picture</label>
+                </div>
+            </div>
+
+            <div className="filter__group">
+                <div className="filter__item">
+                    <input type="checkbox" id="strictMode" {...inputsProps['strictMode']} />
+                    <label htmlFor="strictMode">Strict mode</label>
                 </div>
             </div>
 

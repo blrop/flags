@@ -11,6 +11,7 @@ export default interface FlagProps {
 
     pictureCross?: boolean,
     pictureStar?: boolean,
+    pictureSun?: boolean,
     pictureCircle?: boolean,
     pictureTriangle?: boolean,
     pictureCrescent?: boolean,
@@ -31,6 +32,7 @@ export const FLAG_PROPS_KEYS: (keyof FlagProps)[] = [
 
     'pictureCross',
     'pictureStar',
+    'pictureSun',
     'pictureCircle',
     'pictureTriangle',
     'pictureCrescent',

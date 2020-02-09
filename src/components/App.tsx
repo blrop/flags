@@ -16,9 +16,23 @@ enum Screen {
 }
 
 const getFilteredFlags = (filtersState: FlagProps) => {
-    const isFilterFieldOk = (name: keyof FlagProps, filterState: FlagProps, flagProps: FlagProps): boolean => {
-        return !getProp(filtersState, name) || (getProp(filtersState, name) && getProp(flagProps, name)) || false;
+    const isFilterEmpty = (filtersState: FlagProps): boolean => {
+        return !FLAG_PROPS_KEYS.reduce((accumulator: boolean, currentValue: any) => {
+            return accumulator || getProp(filtersState, currentValue);
+        }, false);
     };
+
+    const isFilterFieldOk = (name: keyof FlagProps, filterState: any, flagProps: FlagProps): boolean => {
+        if (filterState.strictMode) {
+            return (!!getProp(filtersState, name) === !!getProp(flagProps, name));
+        } else {
+            return !getProp(filtersState, name) || (getProp(filtersState, name) && getProp(flagProps, name)) || false;
+        }
+    };
+
+    if (isFilterEmpty(filtersState)) {
+        return FLAGS;
+    }
 
     return FLAGS.filter((flag: Flag) => {
         return FLAG_PROPS_KEYS.reduce((accumulator: boolean, currentValue) => {
