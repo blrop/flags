@@ -12,6 +12,7 @@ const getFlagProps = (input: FlagProps): FlagProps => {
         colorYellow: false,
         pictureCross: false,
         pictureStar: false,
+        pictureSun: false,
         pictureCircle: false,
         pictureTriangle: false,
         pictureCrescent: false,
@@ -47,11 +48,11 @@ export const FLAGS = [
     }, {
         name: 'Antigua and Barbuda',
         picture: 'Antigua_and_Barbuda.svg',
-        props: getFlagProps({ colorBlack: true, colorYellow: true, colorBlue: true, colorWhite: true, colorRed: true, pictureTriangle: true, pictureOther: true })
+        props: getFlagProps({ colorBlack: true, colorYellow: true, colorBlue: true, colorWhite: true, colorRed: true, pictureTriangle: true, pictureOther: true, pictureSun: true })
     }, {
         name: 'Argentina',
         picture: 'Argentina.svg',
-        props: getFlagProps({ linesHorizontal: true, colorBlue: true, colorWhite: true, colorYellow: true, pictureOther: true})
+        props: getFlagProps({ linesHorizontal: true, colorBlue: true, colorWhite: true, colorYellow: true, pictureOther: true, pictureSun: true })
     }, {
         name: 'Armenia',
         picture: 'Armenia.svg',
@@ -335,7 +336,7 @@ export const FLAGS = [
     },{
         name: "India",
         picture: "India.svg",
-        props: getFlagProps({ linesHorizontal: true, colorYellow: true, colorWhite: true, colorGreen: true, pictureCircle: true, pictureOther: true })
+        props: getFlagProps({ linesHorizontal: true, colorYellow: true, colorWhite: true, colorGreen: true, pictureCircle: true, pictureOther: true, pictureSun: true })
     },{
         name: "Indonesia",
         picture: "Indonesia.svg",
@@ -375,7 +376,7 @@ export const FLAGS = [
     },{
         name: "Kazakhstan",
         picture: "Kazakhstan.svg",
-        props: getFlagProps({ colorBlue: true, colorYellow: true, pictureCircle: true, pictureOther: true })
+        props: getFlagProps({ colorBlue: true, colorYellow: true, pictureCircle: true, pictureOther: true, pictureSun: true })
     },{
         name: "Kenya",
         picture: "Kenya.svg",
@@ -383,7 +384,7 @@ export const FLAGS = [
     },{
         name: "Kiribati",
         picture: "Kiribati.svg",
-        props: getFlagProps({ linesHorizontal: true, colorRed: true, colorYellow: true, colorWhite: true, colorBlue: true, pictureCircle: true, pictureOther: true })
+        props: getFlagProps({ linesHorizontal: true, colorRed: true, colorYellow: true, colorWhite: true, colorBlue: true, pictureCircle: true, pictureOther: true, pictureSun: true })
     },{
         name: "Kosovo",
         picture: "Kosovo.svg",
@@ -395,7 +396,7 @@ export const FLAGS = [
     },{
         name: "Kyrgyzstan",
         picture: "Kyrgyzstan.svg",
-        props: getFlagProps({ colorRed: true, colorYellow: true, pictureCircle: true, pictureOther: true })
+        props: getFlagProps({ colorRed: true, colorYellow: true, pictureCircle: true, pictureOther: true, pictureSun: true })
     },{
         name: "Laos",
         picture: "Laos.svg",
@@ -443,7 +444,7 @@ export const FLAGS = [
     },{
         name: "Malaysia",
         picture: "Malaysia.svg",
-        props: getFlagProps({ linesHorizontal: true, colorRed: true, colorWhite: true, colorBlue: true, colorYellow: true, pictureCrescent: true, pictureOther: true })
+        props: getFlagProps({ linesHorizontal: true, colorRed: true, colorWhite: true, colorBlue: true, colorYellow: true, pictureCrescent: true, pictureOther: true, pictureSun: true })
     },{
         name: "Maldives",
         picture: "Maldives.svg",
@@ -499,11 +500,11 @@ export const FLAGS = [
     },{
         name: "Namibia",
         picture: "Namibia.svg",
-        props: getFlagProps({ colorBlue: true, colorYellow: true, colorWhite: true, colorRed: true, colorGreen: true, pictureTriangle: true, pictureCircle: true, pictureOther: true })
+        props: getFlagProps({ colorBlue: true, colorYellow: true, colorWhite: true, colorRed: true, colorGreen: true, pictureTriangle: true, pictureCircle: true, pictureOther: true, pictureSun: true })
     },{
         name: "Nauru",
         picture: "Nauru.svg",
-        props: getFlagProps({ linesHorizontal: true, colorBlue: true, colorYellow: true, colorWhite: true, pictureCircle: true, pictureOther: true })
+        props: getFlagProps({ linesHorizontal: true, colorBlue: true, colorYellow: true, colorWhite: true, pictureCircle: true, pictureOther: true, pictureSun: true })
     },{
         name: "Nepal",
         picture: "Nepal.svg",
@@ -535,7 +536,7 @@ export const FLAGS = [
     },{
         name: "North Macedonia",
         picture: "North_Macedonia.svg",
-        props: getFlagProps({ colorRed: true, colorYellow: true, pictureCircle: true, pictureOther: true })
+        props: getFlagProps({ colorRed: true, colorYellow: true, pictureCircle: true, pictureOther: true, pictureSun: true })
     },{
         name: "Norway",
         picture: "Norway.svg",
@@ -595,7 +596,7 @@ export const FLAGS = [
     },{
         name: "Rwanda",
         picture: "Rwanda.svg",
-        props: getFlagProps({ linesHorizontal: true, colorBlue: true, colorYellow: true, colorGreen: true, pictureCircle: true, pictureOther: true })
+        props: getFlagProps({ linesHorizontal: true, colorBlue: true, colorYellow: true, colorGreen: true, pictureCircle: true, pictureOther: true, pictureSun: true })
     },{
         name: "Saint Kitts and Nevis",
         picture: "Saint_Kitts_and_Nevis.svg",
@@ -731,7 +732,7 @@ export const FLAGS = [
     },{
         name: "The Marshall Islands",
         picture: "the_Marshall_Islands.svg",
-        props: getFlagProps({ colorBlue: true, colorWhite: true, colorYellow: true, pictureOther: true })
+        props: getFlagProps({ colorBlue: true, colorWhite: true, colorYellow: true, pictureOther: true, pictureSun: true })
     },{
         name: "The Netherlands",
         picture: "the_Netherlands.svg",
@@ -739,7 +740,7 @@ export const FLAGS = [
     },{
         name: "The Philippines",
         picture: "the_Philippines.svg",
-        props: getFlagProps({ linesHorizontal: true, colorBlue: true, colorRed: true, colorWhite: true, colorYellow: true, pictureStar: true, pictureOther: true })
+        props: getFlagProps({ linesHorizontal: true, colorBlue: true, colorRed: true, colorWhite: true, colorYellow: true, pictureStar: true, pictureOther: true, pictureSun: true })
     },{
         name: "The Republic of Abkhazia",
         picture: "the_Republic_of_Abkhazia.svg",
@@ -747,7 +748,7 @@ export const FLAGS = [
     },{
         name: "The Republic of China (Taiwan)",
         picture: "the_Republic_of_China.svg",
-        props: getFlagProps({ colorRed: true, colorBlue: true, colorWhite: true, pictureCircle: true, pictureOther: true })
+        props: getFlagProps({ colorRed: true, colorBlue: true, colorWhite: true, pictureCircle: true, pictureOther: true, pictureSun: true })
     },{
         name: "The Sahrawi Arab Democratic Republic",
         picture: "the_Sahrawi_Arab_Democratic_Republic.svg",
@@ -819,7 +820,7 @@ export const FLAGS = [
     },{
         name: "Uruguay",
         picture: "Uruguay.svg",
-        props: getFlagProps({ linesHorizontal: true, colorBlue: true, colorWhite: true, colorYellow: true, pictureOther: true })
+        props: getFlagProps({ linesHorizontal: true, colorBlue: true, colorWhite: true, colorYellow: true, pictureOther: true, pictureSun: true })
     },{
         name: "Uzbekistan",
         picture: "Uzbekistan.svg",
