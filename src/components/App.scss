@@ -136,6 +136,7 @@ $main-bg: #ccc;
     height: 100vh;
     display: flex;
     flex-direction: column;
+    position: relative;
 
     h1 {
         margin: 0 0 0.5em 0;
@@ -228,6 +229,10 @@ $main-bg: #ccc;
             margin-bottom: 0.5em;
         }
     }
+}
+
+.GithubCorner {
+    opacity: 0.5;
 }
 
 @media (max-width: 700px) {

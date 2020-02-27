@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
+// @ts-ignore
+import GithubCorner from 'react-github-corners';
+import 'react-github-corners/dist/GithubCorner.css'
 
 import FlagsList from "./flagsList/FlagsList";
 import Filter from "./filters/Filter";
@@ -7,7 +10,7 @@ import { FLAGS } from '../common/flags-defenitions';
 import FlagProps, { FLAG_PROPS_KEYS } from "../common/FlagProps";
 import Flag from "../common/Flag";
 import { getProp } from "../common/functions";
-import { SESSION_STORAGE_KEY } from "../common/constants";
+import { GITHUB_URL, SESSION_STORAGE_KEY } from "../common/constants";
 
 import './App.scss';
 
@@ -94,6 +97,8 @@ const App = () => {
                 </div>
 
                 <div className={classNames("flags-list-wrapper", { shown: isFlagsScreenSet })}>
+                    <GithubCorner url={GITHUB_URL} target="_blank" />
+
                     <h1>Flag list</h1>
                     <FlagsList
                         flags={filteredFlags}
