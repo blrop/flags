@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FLAG_PROPS_KEYS } from "../../common/FlagProps";
 
 interface FilterProps {
     onChange: (state: object) => void,
+    state: any,
 }
 
 const Filter: React.FC<FilterProps> = (props: FilterProps) => {
@@ -12,19 +13,16 @@ const Filter: React.FC<FilterProps> = (props: FilterProps) => {
     filterKeys.forEach(item => {
         initialState[item] = false;
     });
-    const [filtersState, setFiltersState] = useState(initialState);
 
     let inputsProps: any = {};
     filterKeys.forEach(item => {
         inputsProps[item] = {
-            checked: filtersState[item],
+            checked: !!props.state[item],
             onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
                 const newState = {
-                    ...filtersState,
+                    ...props.state,
                     [item]: e.target.checked
                 };
-
-                setFiltersState(newState);
 
                 props.onChange(newState);
             },
@@ -33,8 +31,6 @@ const Filter: React.FC<FilterProps> = (props: FilterProps) => {
 
 
     const onFilterResetClick = () => {
-        setFiltersState(initialState);
-
         props.onChange(initialState);
     };
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
 import FlagsList from "./flagsList/FlagsList";
@@ -7,6 +7,7 @@ import { FLAGS } from '../common/flags-defenitions';
 import FlagProps, { FLAG_PROPS_KEYS } from "../common/FlagProps";
 import Flag from "../common/Flag";
 import { getProp } from "../common/functions";
+import { SESSION_STORAGE_KEY } from "../common/constants";
 
 import './App.scss';
 
@@ -41,13 +42,35 @@ const getFilteredFlags = (filtersState: FlagProps) => {
     });
 };
 
+const saveFiltersState = (state: any) => {
+    const objectToSave: any = {};
+    Object.keys(state).forEach((item) => {
+        objectToSave[item] = state[item];
+    });
+    sessionStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(objectToSave));
+};
+
+const loadFiltersState = () => {
+    const savedString = sessionStorage.getItem(SESSION_STORAGE_KEY);
+    let savedObject: any = {};
+    if (savedString) {
+        savedObject = JSON.parse(savedString);
+    }
+    return savedObject;
+};
+
 const App = () => {
     const [filtersState, setFiltersState] = useState({});
     const [currentScreen, setCurrentScreen] = useState(Screen.Filters); // for mobile only; on wide devices both parts of the app are shown simultaneously
 
     const handleFilterChange = (state: object) => {
         setFiltersState(state);
+        saveFiltersState(state);
     };
+
+    useEffect(() => {
+        setFiltersState(loadFiltersState());
+    }, []);
 
     const setFiltersScreen  = () => {
         setCurrentScreen(Screen.Filters);
@@ -66,6 +89,7 @@ const App = () => {
                 <div className={classNames("filter", { shown: isFiltersScreenSet })}>
                     <Filter
                         onChange={handleFilterChange}
+                        state={filtersState}
                     />
                 </div>
 
