@@ -16,17 +16,21 @@ const FlagItem: React.FC<FlagItemProps> = ({ flag }: FlagItemProps) => {
         setModalOpen(false);
     };
 
+    // @ts-ignore
+    const img = <img
+        className="flag-item__image"
+        src={`${FLAGS_DIR}/${flag.picture}`}
+        alt={`${flag.name} flag`}
+        loading="lazy"
+    />;
+
     return (
         <>
             <div
                 className="flag-item"
                 onClick={handleFlagClick}
             >
-                <img
-                    className="flag-item__image"
-                    src={`${FLAGS_DIR}/${flag.picture}`}
-                    alt={`${flag.name} flag`}
-                />
+                {img}
                 <div className="flag-item__name">
                     {flag.name}
                 </div>
